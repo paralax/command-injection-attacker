@@ -3,10 +3,10 @@ ExtensionType: 1
 Name: Command Injection Attacker
 RepoName: command-injection-attacker
 ScreenVersion: 1.0
-SerialVersion: 0
+SerialVersion: 1
 MinPlatformVersion: 0
 ProOnly: False
-Author: Julian Horoszkiewicz, Pentest Ltd.
+Author: Julian Horoszkiewicz, Secarma Ltd.
 ShortDescription: Customizable payload generator to detect and exploit command injection flaws during blind testing.
 EntryPoint: ./build/libs/shelling.jar
 BuildCommand: gradle jar
