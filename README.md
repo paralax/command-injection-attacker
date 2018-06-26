@@ -9,7 +9,7 @@ This project revolves around detecting OS command and argument injection flaws (
 
 Its main objectives are:
 * provide methodology for the OS command injection detection
-* provide software implementating this methodology
+* provide software implementing this methodology
 
 # How this document is organised
 This documentation is divided into two separate sections:
@@ -91,7 +91,7 @@ And the output is (the injection is working):
     root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
     bin: [...]
 
-This is just one of the examples of how the syntax of the target injectable expression affects the results. The solution to this problem is a good list of vulnerable syntax-varied cases, as we have to guess as many syntax-dependant cases as possible.
+This is just one of the examples of how the syntax of the target injectable expression affects the results. The solution to this problem is a good list of vulnerable syntax-varied cases, as we have to guess as many syntax-dependent cases as possible.
 For the rest of this write-up, let’s use the following legend:
 
 - OS_COMMAND = the name of the remote binary we want to execute, e.g. `ping`
@@ -307,7 +307,7 @@ Hence, for command injection, we can have the following feedback channels:
 - file system (if we have access to it; we can attempt to inject commands like `touch /tmp/cmdinject` and then inspect the `/tmp` directory if the file was created - or have the customer to do it for us)
 - availability (if all the above fails/is not an option, the only way (without involving third parties) to confirm that the injected command has executed, would be an injection of some sort of payload causing a DoS condition like reboot, shutdown or remove)
 
-In order to avoid false negatives, when no command output is returned by the application, it is necessary to employ payloads utilizing a different feedback channel. Network, particularly DNS (watching for specific domain name lookups coming from the target - this is the main feedback channel usede by Burp Collaborator) is a very good choice, as DNS lookups are usually allowed when no other outbound traffic is permitted. Also, this option is great as it works as well with asynchronous injections.
+In order to avoid false negatives, when no command output is returned by the application, it is necessary to employ payloads utilizing a different feedback channel. Network, particularly DNS (watching for specific domain name lookups coming from the target - this is the main feedback channel used by Burp Collaborator) is a very good choice, as DNS lookups are usually allowed when no other outbound traffic is permitted. Also, this option is great as it works as well with asynchronous injections.
 
 
 
@@ -357,7 +357,7 @@ Having and using a private Collaborator service makes more sense if we set it up
 Also, it's good to always run a health check of the Collaborator service before actually using it.
 
 ### time
-This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It shouold still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
+This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It should still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
 Upon successful execution, payloads utilizing this feedback channel (e.g. `sleep 25`) cause a significant delay in the response.
 
 ## Payload marking
